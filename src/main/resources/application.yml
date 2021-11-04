@@ -17,3 +17,5 @@ logging:
   level:
     org.hibernate.type: trace
     org.hibernate.SQL: DEBUG
+
+service.host: http://localhost/
