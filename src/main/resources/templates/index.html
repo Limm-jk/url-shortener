@@ -5,23 +5,27 @@
         <meta charset="UTF-8">
         <title>Title</title>
     </head>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <body>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="/js/main.js"></script>
         <h3>URL Shortener</h3>
-        <form>
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <input id="input" placeholder="Input URL Here!">
+        <section id="sect">
+            <form id="form">
+                <div id="url-input" class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input id="input" placeholder="Input URL Here!">
+                            <input id="sbutton"value="Shorten" type="button" onclick="dataSend()">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <input value="Shorten" type="button" onclick="dataSend()">
-            <div id="resultDiv">
-                <p th:if="${msg}!=null" th:text="${msg}"></p>
-            </div>
-        </form>
+
+                <div id="resultDiv">
+                    <p th:if="${msg}!=null" th:text="${msg}"></p>
+                </div>
+            </form>
+        </section>
         <br>
     </body>
 </html>

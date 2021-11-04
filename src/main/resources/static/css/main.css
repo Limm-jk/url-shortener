@@ -1,0 +1,52 @@
+#input {
+    width: 72%;
+    height: 60px;
+    background: #fff;
+    border: 1px solid #d3d4d7;
+    border-radius: 8px 8px 8px 8px;
+    font-size: 20px;
+    color: #36383b;
+    padding: 0 20px;
+    position: relative;
+    /*margin: 0 0 1rem;*/
+    margin-right: 20px;
+}
+#sbutton {
+    vertical-align: bottom;
+    margin-bottom: 0;
+    background: #1b3987;
+    min-width: 20%;
+    float: right;
+    position: relative;
+    font-size: 20px;
+    line-height: 1.11;
+    padding: 18px 30px;
+    border: 1px solid transparent;
+    border-radius: 8px 8px 8px 8px;
+    color: #fff;
+}
+
+#form {
+    background: #0b1736;
+}
+
+#url-input {
+    margin-bottom: 30px;
+}
+
+#resultDiv {
+    height: 60px;
+    background: #fff;
+    border: 1px solid #d3d4d7;
+    border-radius: 8px 8px 8px 8px;
+    font-size: 20px;
+    color: #36383b;
+    padding: 0 20px;
+    position: relative;
+}
+
+#sect {
+    background: #0b1736;
+    padding: 20px 20px 20px 20px;
+    margin-bottom: 40px;
+}
