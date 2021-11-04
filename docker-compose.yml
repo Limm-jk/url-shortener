@@ -1,0 +1,21 @@
+version: "3"
+services:
+  db:
+    image: postgres:latest
+    container_name: pgdb
+    ports:
+      - "5437:5432"
+#    volumes:
+#      - ~/WorkSpace/postgres/shortener/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=1234
+    privileged: true
+
+  server:
+    image: limm0jk/url-shortener:0.0.1
+    container_name: url_shortener_server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db

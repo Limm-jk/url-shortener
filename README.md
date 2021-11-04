@@ -3,6 +3,7 @@
 ## How To Run
 ```
 // docker와 docker-compose가 설치되어있음을 가정
+// docker pull limm0jk/url-shortener:0.0.1
 docker-compose up
 ```
 
