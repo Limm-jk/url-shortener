@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="/js/main.js"></script>
+        <h3>URL Shortener</h3>
+        <form>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input id="input" placeholder="Input URL Here!">
+                    </div>
+                </div>
+            </div>
+            <input value="Shorten" type="button" onclick="dataSend()">
+            <div id="resultDiv">
+                <p th:if="${msg}!=null" th:text="${msg}"></p>
+            </div>
+        </form>
+        <br>
+    </body>
+</html>
