@@ -1,17 +1,19 @@
 package com.limm.urlshortener.util;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class UrlChecker {
 
     public boolean urlValidate(String url) {
+//        String fixedUrl = httpChecker(url);
+        // TODO : 다양한 경우의 url을 커버하는 정규식
         return true;
     }
 
     public String httpChecker(String url) {
+        if (!(url.startsWith("https://") || url.startsWith("http://")))
+            return "http://" + url;
         return url;
     }
 }
