@@ -66,4 +66,43 @@ public class UrlCheckerTest {
         // then
         assertEquals(actual, expected);
     }
+
+    @Test
+    @DisplayName("shortUrlValidate를 통해서 입력받은 short url이 valid한지 확인한다.")
+    void shortUrlValidateTest() {
+        // given
+        String givenURL = "HVe8w";
+
+        // when
+        boolean actual = urlChecker.shortUrlValidate(givenURL);
+
+        // then
+        assertTrue(actual);
+    }
+
+    @Test
+    @DisplayName("shortUrlValidate를 통해서 입력받은 short url에 옳지 않은 문자가 포함되어있다면 false를 반환한다.")
+    void shortUrlValidateTest2() {
+        // given
+        String givenURL = "HVe8w!";
+
+        // when
+        boolean actual = urlChecker.shortUrlValidate(givenURL);
+
+        // then
+        assertFalse(actual);
+    }
+
+    @Test
+    @DisplayName("shortUrlValidate를 통해서 입력받은 short url이 너무 길다면 false를 반환한다.")
+    void shortUrlValidateTest3() {
+        // given
+        String givenURL = "HVe8wH3caR";
+
+        // when
+        boolean actual = urlChecker.shortUrlValidate(givenURL);
+
+        // then
+        assertFalse(actual);
+    }
 }
