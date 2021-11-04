@@ -6,7 +6,7 @@
 // docker pull limm0jk/url-shortener:0.0.1
 docker-compose up
 ```
-**✋ 배포 환경에서 사용 시, application.yml의 service.host값을 환경에 맞게 변경해주셔야 합니다.**
+**✋ 해당 image는 localhost:8080/{shorturl}형식으로 동작합니다. 배포 환경에서 사용 시, application.yml의 service.host값을 환경에 맞게 변경해주셔야 합니다.**
 ## Spec
 - 웹 페이지 입력폼에 URL 입력 시 단축된 결과 출력
 - 브라우저의 주소창에 단축 URL 입력 시 기존 URL로 리다이렉트
@@ -27,7 +27,7 @@ docker-compose up
 ### Encode
 - 효율적인 사용을 위하여 문자열을 포함한 인코딩을 고민
 - 값을 구별할 수 있는 id 값은 db의 id로 사용
-- base64는 문제가 되는 문자가 존재하므로, 이를 제외한 base62를 사용
+- **base64는 문제가 되는 문자가 존재**하므로, 이를 제외한 base62를 사용
 
 ### Exception
 - InvalidShortUrl / InvalidUrl / UrlNotFound Exception 세가지로 정의하여 관리
@@ -37,12 +37,13 @@ docker-compose up
 ### Database  
 Urls Table은 id, url, createdAt 세가지 컬럼으로 구성
 - url에 unique 제약조건
-- 1개만 존재해야하며, create 시 존재하는지 확인해야하므로 indexing 용도 또한 있음.
+    - 1개만 존재해야함
+    - create 시 존재하는지 확인해야하므로 **효율적인 search를 위한 indexing** 용도
 
 ### Cache
 ![](images/pareto.png)  
-- 20%의 원인으로 인하여 80%의 결과가 발생한다는 파레토의 법칙에 의거, Short URL을 converting 하는 작업에 cache가 필요하다 판단.
+- **20%의 원인으로 인하여 80%의 결과가 발생한다**는 파레토의 법칙에 의거, Short URL을 converting 하는 작업에 cache가 필요하다 판단.
 - spring boot의 cache 의존성을 통하여 구현
 
 ![](images/caching.png) 
-다음과 같이 2번째 요청은 쿼리를 요청하지 않는 것을 알 수 있다.  
+- 다음과 같이 2번째 요청은 **쿼리를 요청하지 않는 것**을 알 수 있다.  
