@@ -1,4 +1,4 @@
-package com.limm.urlshortener;
+package com.limm.urlshortener.util;
 
 import com.limm.urlshortener.util.UrlUtils;
 import org.junit.jupiter.api.DisplayName;
