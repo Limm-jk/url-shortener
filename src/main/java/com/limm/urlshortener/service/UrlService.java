@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -28,13 +30,17 @@ public class UrlService {
 
     public String createShortURL(String url) {
         if (!urlChecker.urlValidate(url)) throw new InvalidUrlException();
+        long urlId;
+        Optional<Urls> findUrl;
 
-        Urls savedUrl = saveUrl(urlChecker.httpChecker(url));
-        String shortUrl = urlUtils.encoding(savedUrl.getId());
+        if ((findUrl = urlRepository.findByUrl(url)).isPresent()) {
+            urlId = findUrl.get().getId();
+        } else {
+            Urls savedUrl = saveUrl(urlChecker.httpChecker(url));
+            urlId = savedUrl.getId();
+        }
 
-        log.info(shortenHost);
-
-        return shortenHost + shortUrl;
+        return shortenHost + urlUtils.encoding(urlId);
     }
 
     public Urls saveUrl(String url) {
