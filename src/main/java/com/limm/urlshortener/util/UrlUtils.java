@@ -19,11 +19,11 @@ public class UrlUtils {
         return sb.toString();
     }
 
-    public long decoding(String param) {
+    public long decoding(String shortUrl) {
         long sum = 0;
         long power = 1;
-        for (int i = 0; i < param.length(); i++) {
-            sum += CODEC.indexOf(param.charAt(i)) * power;
+        for (int i = 0; i < shortUrl.length(); i++) {
+            sum += CODEC.indexOf(shortUrl.charAt(i)) * power;
             power *= RADIX;
         }
 
