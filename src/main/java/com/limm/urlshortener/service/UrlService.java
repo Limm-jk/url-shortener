@@ -31,13 +31,14 @@ public class UrlService {
 
     public String createShortURL(String url) {
         if (!urlChecker.urlValidate(url)) throw new InvalidUrlException();
+        String fixedUrl = urlChecker.httpChecker(url);
         long urlId;
         Optional<Urls> findUrl;
 
-        if ((findUrl = urlRepository.findByUrl(url)).isPresent()) {
+        if ((findUrl = urlRepository.findByUrl(fixedUrl)).isPresent()) {
             urlId = findUrl.get().getId();
         } else {
-            Urls savedUrl = saveUrl(urlChecker.httpChecker(url));
+            Urls savedUrl = saveUrl(fixedUrl);
             urlId = savedUrl.getId();
         }
 
