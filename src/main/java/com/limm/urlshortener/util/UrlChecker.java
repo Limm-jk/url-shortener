@@ -16,4 +16,8 @@ public class UrlChecker {
             return "http://" + url;
         return url;
     }
+
+    public boolean shortUrlValidate(String shortUrl) {
+        return shortUrl.matches("[0-9A-Za-z]{4,8}+");
+    }
 }
