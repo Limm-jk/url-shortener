@@ -1,8 +1,13 @@
 package com.limm.urlshortener.util;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
 public class UrlUtils {
-    final int RADIX = 62;
-    final String CODEC = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private final int RADIX = 62;
+    private final String CODEC = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     public String encoding(long param) {
         StringBuilder sb = new StringBuilder();

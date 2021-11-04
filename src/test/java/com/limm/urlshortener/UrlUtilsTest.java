@@ -3,19 +3,23 @@ package com.limm.urlshortener;
 import com.limm.urlshortener.util.UrlUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SpringBootTest
 public class UrlUtilsTest {
 
-    private final UrlUtils utils = new UrlUtils();
+    @Autowired
+    private UrlUtils utils;
 
     @Test
     @DisplayName("encoding 함수는 long타입의 수를 62진수의 형식으로 encode할 수 있다.")
     void encodingTest() {
         // given
         long origin = 12345L;
-        String expected = "HND";
+        String expected = "7D3";
 
         // when
         String actual = utils.encoding(origin);
@@ -28,7 +32,7 @@ public class UrlUtilsTest {
     @DisplayName("decoding 함수는 62진수 형식의 문자열을 long타입 형식으로 decode할 수 있다.")
     void decodingTest() {
         // given
-        String origin = "HND";
+        String origin = "7D3";
         long expected = 12345L;
 
         // when
