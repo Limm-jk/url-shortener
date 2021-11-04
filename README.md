@@ -6,7 +6,7 @@
 // docker pull limm0jk/url-shortener:0.0.1
 docker-compose up
 ```
-
+**✋ 배포 환경에서 사용 시, application.yml의 service.host값을 환경에 맞게 변경해주셔야 합니다.**
 ## Spec
 - 웹 페이지 입력폼에 URL 입력 시 단축된 결과 출력
 - 브라우저의 주소창에 단축 URL 입력 시 기존 URL로 리다이렉트
