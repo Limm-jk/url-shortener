@@ -9,14 +9,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional
+//@Transactional
+@Testcontainers
 public class UrlServiceTest {
 
     @Value("${service.host}")
@@ -27,6 +32,18 @@ public class UrlServiceTest {
 
     @Autowired
     private UrlUtils urlUtils;
+
+    @Container
+    static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+
+//    @Container
+//    PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest");
+
+    @Test
+    @DisplayName("Postgres TestContainers가 동작 중이다.")
+    void checkTestContainers() {
+        assertTrue(postgreSQLContainer.isRunning());
+    }
 
     @Test
     @DisplayName("createShortUrl은 ShortUrl을 생성할 수 있다.")
